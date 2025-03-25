@@ -24,3 +24,10 @@
 .loader.active {
   display: block;
 }
+
+.js-load-more-btn {
+  display: none;
+}
+.js-load-more-btn.show {
+  display: block;
+}

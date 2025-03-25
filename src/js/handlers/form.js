@@ -3,6 +3,7 @@ import iziToast from 'izitoast';
 import { fetchFotoCard } from '../pixabay-api';
 import { refs } from '../utils/constants';
 import { createMarkupGalleryCards } from '../render-functions';
+import { handlerLoadMoreBtn } from './load_more';
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -30,6 +31,7 @@ export function handlerSearch(ev) {
   return fetchFotoCard(userQuery)
     .then(data => {
       refs.loaderEl.classList.remove('active');
+
       if (!data.total) {
         refs.galleryEl.innerHTML = '';
 
@@ -42,6 +44,7 @@ export function handlerSearch(ev) {
       }
 
       refs.galleryEl.innerHTML = createMarkupGalleryCards(data.hits);
+
       lightbox.refresh();
     })
     .catch(err => {
@@ -49,5 +52,6 @@ export function handlerSearch(ev) {
     })
     .finally(() => {
       form.reset();
+      refs.btnLoadMore.classList.add('show');
     });
 }

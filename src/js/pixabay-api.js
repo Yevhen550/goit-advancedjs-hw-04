@@ -1,19 +1,18 @@
-const BASE_URL = 'https://pixabay.com/api/';
-const API_KEY = '?key=49168840-e3c83c6477977e837e7a2b39b';
+import axios from 'axios';
+import { API_KEY } from './utils/constants';
 
-export function fetchFotoCard(query) {
-  const searchParams = new URLSearchParams({
+axios.defaults.baseURL = 'https://pixabay.com/api/';
+
+export async function fetchFotoCard(query) {
+  const params = {
     q: query.trim(),
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
-  });
+    per_page: 15,
+  };
 
-  return fetch(`${BASE_URL}${API_KEY}&${searchParams}`).then(res => {
-    if (!res.ok) {
-      throw new Error(res.status);
-    }
+  const { data } = await axios.get(`/${API_KEY}`, { params });
 
-    return res.json();
-  });
+  return data;
 }
