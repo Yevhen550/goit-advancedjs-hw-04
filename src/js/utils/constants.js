@@ -7,9 +7,9 @@ const refs = {
 
 const API_KEY = '?key=49168840-e3c83c6477977e837e7a2b39b';
 
-const cardQueryParams = {
-  page: 1,
-  userQuery: '',
-};
+// const cardQueryParams = {
+//   page: 1,
+//   userQuery: '',
+// };
 
 export { refs, cardQueryParams, API_KEY };
