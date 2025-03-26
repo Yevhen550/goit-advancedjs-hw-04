@@ -14,6 +14,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
+loadMoreButton.button.addEventListener('click', handelLoadMore);
+
 export async function handlerSearch(ev) {
   ev.preventDefault();
 
@@ -88,6 +90,7 @@ async function handelLoadMore() {
       createMarkupGalleryCards(data.hits)
     );
     lightbox.refresh();
+    smoothScroll();
 
     if (page * 15 >= data.totalHits) {
       iziToast.info({
@@ -105,4 +108,13 @@ async function handelLoadMore() {
   }
 }
 
-loadMoreButton.button.addEventListener('click', handelLoadMore);
+function smoothScroll() {
+  const card = document.querySelector('.gallery-card');
+  const height = card.getBoundingClientRect().height + 24;
+
+  window.scrollBy({
+    top: height * 2,
+    left: 0,
+    behavior: 'smooth',
+  });
+}
