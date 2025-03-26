@@ -14,8 +14,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-loadMoreButton.button.addEventListener('click', handelLoadMore);
-
 export async function handlerSearch(ev) {
   ev.preventDefault();
 
@@ -107,6 +105,8 @@ async function handelLoadMore() {
     loadMoreButton.hide();
   }
 }
+
+loadMoreButton.button.addEventListener('click', handelLoadMore);
 
 function smoothScroll() {
   const card = document.querySelector('.gallery-card');
