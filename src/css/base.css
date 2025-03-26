@@ -13,3 +13,7 @@ body {
   margin-left: 156px;
   margin-right: 156px;
 }
+
+.is-hidden {
+  display: none;
+}
