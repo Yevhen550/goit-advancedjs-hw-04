@@ -3,7 +3,7 @@ import iziToast from 'izitoast';
 import { fetchFotoCard } from '../pixabay-api';
 import { refs } from '../utils/constants';
 import { createMarkupGalleryCards } from '../render-functions';
-import { loadMoreButton } from '../../main';
+import { LoadMoreButton } from '../utils/buttonService';
 
 let page = 1;
 let userQuery = '';
@@ -13,6 +13,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionPosition: 'bottom',
   captionDelay: 250,
 });
+
+const loadMoreButton = new LoadMoreButton(refs.btnLoadMore);
 
 export async function handlerSearch(ev) {
   ev.preventDefault();
